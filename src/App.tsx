@@ -544,14 +544,12 @@ function VisualStory() {
       title: 'Sự kiện & cộng đồng đầu tư',
       text: 'Các hoạt động chia sẻ kiến thức, kết nối diễn giả và giao lưu cùng cộng đồng nhà đầu tư.',
       photos: galleries.events,
-      columns: 'lg:columns-3',
     },
     {
       eyebrow: 'Beyond the market',
       title: 'Phía sau những giờ phân tích',
       text: 'Một vài khoảnh khắc đời thường được chọn lọc, nơi công việc, trải nghiệm và sự cân bằng gặp nhau.',
       photos: galleries.personal,
-      columns: 'lg:columns-3',
     },
   ]
 
@@ -568,16 +566,50 @@ function VisualStory() {
             <p className="max-w-2xl text-sm leading-6 text-slate-500">{group.text}</p>
             <span className="hidden rounded-full border border-emerald-900/10 bg-mist px-3 py-1.5 text-xs font-bold text-forest md:inline-flex">{group.photos.length} khoảnh khắc</span>
           </div>
-          <div className={`columns-2 gap-4 ${group.columns}`}>
-            {group.photos.map((photo, index) => <motion.figure {...reveal} transition={{ duration: .4, delay: index * .04 }} key={photo.src} className="group relative mb-4 break-inside-avoid overflow-hidden rounded-2xl border border-emerald-950/10 bg-mist shadow-sm">
-              <img src={photo.src} alt={photo.alt} loading="lazy" className="h-auto w-full transition duration-500 group-hover:scale-[1.025]" />
-              <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent px-4 pb-4 pt-16 text-xs font-semibold leading-5 text-white opacity-100 transition sm:opacity-0 sm:group-hover:opacity-100">{photo.caption}</figcaption>
-            </motion.figure>)}
-          </div>
+          <BalancedMasonry photos={group.photos} />
         </div>)}
       </div>
     </Container>
   </section>
+}
+
+type GalleryPhoto = (typeof galleries.events)[number] | (typeof galleries.personal)[number]
+
+function balancePhotos(photos: readonly GalleryPhoto[], columnCount: number) {
+  const columns: GalleryPhoto[][] = Array.from({ length: columnCount }, () => [])
+  const heights = Array.from({ length: columnCount }, () => 0)
+
+  // Xếp ảnh cao trước rồi luôn thêm ảnh tiếp theo vào cột ngắn nhất.
+  // Cách này giữ chất masonry tự nhiên nhưng cân được chân của các cột.
+  ;[...photos].sort((a, b) => b.ratio - a.ratio).forEach(photo => {
+    const shortest = heights.indexOf(Math.min(...heights))
+    columns[shortest].push(photo)
+    heights[shortest] += photo.ratio
+  })
+
+  return columns
+}
+
+function BalancedMasonry({ photos }: { photos: readonly GalleryPhoto[] }) {
+  const [columnCount, setColumnCount] = useState(() => window.matchMedia('(min-width: 1024px)').matches ? 3 : 2)
+
+  useEffect(() => {
+    const media = window.matchMedia('(min-width: 1024px)')
+    const updateColumns = () => setColumnCount(media.matches ? 3 : 2)
+    media.addEventListener('change', updateColumns)
+    return () => media.removeEventListener('change', updateColumns)
+  }, [])
+
+  const columns = useMemo(() => balancePhotos(photos, columnCount), [photos, columnCount])
+
+  return <div className="grid grid-cols-2 items-start gap-4 lg:grid-cols-3">
+    {columns.map((column, columnIndex) => <div key={columnIndex} className="flex min-w-0 flex-col gap-4">
+      {column.map((photo, index) => <motion.figure {...reveal} transition={{ duration: .4, delay: (columnIndex + index) * .04 }} key={photo.src} className="group relative overflow-hidden rounded-2xl border border-emerald-950/10 bg-mist shadow-sm">
+        <img src={photo.src} alt={photo.alt} loading="lazy" className="h-auto w-full transition duration-500 group-hover:scale-[1.025]" />
+        <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent px-4 pb-4 pt-16 text-xs font-semibold leading-5 text-white opacity-100 transition sm:opacity-0 sm:group-hover:opacity-100">{photo.caption}</figcaption>
+      </motion.figure>)}
+    </div>)}
+  </div>
 }
 
 const faqs = [
