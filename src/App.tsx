@@ -551,7 +551,7 @@ function VisualStory() {
       title: 'Phía sau những giờ phân tích',
       text: 'Một vài khoảnh khắc đời thường được chọn lọc, nơi công việc, trải nghiệm và sự cân bằng gặp nhau.',
       photos: galleries.personal,
-      columns: 'lg:columns-4',
+      columns: 'lg:columns-3',
     },
   ]
 
@@ -560,17 +560,18 @@ function VisualStory() {
       <SectionTitle eyebrow="Thư viện hình ảnh" title="Một hành trình được kể bằng những khoảnh khắc thật." text="Hình ảnh được tuyển chọn từ các sự kiện cộng đồng và những khoảnh khắc đời thường của Tài Trần; mỗi nhóm được đặt đúng bối cảnh thay vì sử dụng như hình minh họa ngẫu nhiên." />
       <div className="mt-16 space-y-20">
         {groups.map(group => <div key={group.title}>
-          <div className="mb-7 grid gap-3 border-l-2 border-emerald-500 pl-5 md:grid-cols-[.55fr_1fr] md:items-end">
+          <div className="mb-7 grid gap-3 border-l-2 border-emerald-500 pl-5 md:grid-cols-[.55fr_1fr_auto] md:items-end">
             <div>
               <p className="text-xs font-extrabold uppercase tracking-[.18em] text-emerald-600">{group.eyebrow}</p>
               <h3 className="mt-2 text-2xl font-extrabold tracking-tight text-ink">{group.title}</h3>
             </div>
             <p className="max-w-2xl text-sm leading-6 text-slate-500">{group.text}</p>
+            <span className="hidden rounded-full border border-emerald-900/10 bg-mist px-3 py-1.5 text-xs font-bold text-forest md:inline-flex">{group.photos.length} khoảnh khắc</span>
           </div>
           <div className={`columns-2 gap-4 ${group.columns}`}>
-            {group.photos.map((photo, index) => <motion.figure {...reveal} transition={{ duration: .4, delay: index * .04 }} key={photo.src} className="group relative mb-4 break-inside-avoid overflow-hidden rounded-2xl bg-mist">
+            {group.photos.map((photo, index) => <motion.figure {...reveal} transition={{ duration: .4, delay: index * .04 }} key={photo.src} className="group relative mb-4 break-inside-avoid overflow-hidden rounded-2xl border border-emerald-950/10 bg-mist shadow-sm">
               <img src={photo.src} alt={photo.alt} loading="lazy" className="h-auto w-full transition duration-500 group-hover:scale-[1.025]" />
-              <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 via-black/30 to-transparent px-4 pb-4 pt-12 text-xs font-semibold leading-5 text-white opacity-0 transition group-hover:opacity-100 group-focus-within:opacity-100">{photo.caption}</figcaption>
+              <figcaption className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/80 via-black/25 to-transparent px-4 pb-4 pt-16 text-xs font-semibold leading-5 text-white opacity-100 transition sm:opacity-0 sm:group-hover:opacity-100">{photo.caption}</figcaption>
             </motion.figure>)}
           </div>
         </div>)}

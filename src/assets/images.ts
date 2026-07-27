@@ -19,18 +19,15 @@ import partyStage from './optimized/gallery-party-stage.jpg'
 import partyBanquet from './optimized/gallery-party-banquet.jpg'
 import partyGuest from './optimized/gallery-party-guest.jpg'
 import partyCommunity from './optimized/gallery-party-community.jpg'
-import lifeWorking from './optimized/gallery-life-working.jpg'
-import lifeKoiGarden from './optimized/gallery-life-koi-garden.jpg'
-import lifeCafe from './optimized/gallery-life-cafe.jpg'
-import lifeEventHall from './optimized/gallery-life-event-hall.jpg'
-import lifePoolSelfie from './optimized/gallery-life-pool-selfie.jpg'
-import lifeResortOutdoor from './optimized/gallery-life-resort-outdoor.jpg'
-import lifeSunglasses from './optimized/gallery-life-sunglasses.jpg'
-import lifeResortLounge from './optimized/gallery-life-resort-lounge.jpg'
-import lifePoolLounge from './optimized/gallery-life-pool-lounge.jpg'
-import lifeResortGarden from './optimized/gallery-life-resort-garden.jpg'
-import lifeRestaurant from './optimized/gallery-life-restaurant.jpg'
-import lifeEventHallTwo from './optimized/gallery-life-event-hall-02.jpg'
+import relaxWorkingLaptop from './optimized/relax-working-laptop.jpg'
+import relaxEventHall from './optimized/relax-event-hall.jpg'
+import relaxKoiGarden from './optimized/relax-koi-garden.jpg'
+import relaxResortGarden from './optimized/relax-resort-garden.jpg'
+import relaxResortHallway from './optimized/relax-resort-hallway.jpg'
+import relaxBeachLounge from './optimized/relax-beach-lounge.jpg'
+import relaxPoolLounge from './optimized/relax-pool-lounge.jpg'
+import relaxWhiteShirt from './optimized/relax-white-shirt.jpg'
+import relaxCafeCandid from './optimized/relax-cafe-candid.jpg'
 
 export const images = {
   logo: { src: logo, alt: 'Logo HTG Investment màu xanh lá' },
@@ -61,17 +58,14 @@ export const galleries = {
     { src: partyCommunity, alt: 'Nguyễn Đức Tài giao lưu tại sự kiện cộng đồng nhà đầu tư', caption: 'Kết nối cộng đồng đầu tư' },
   ],
   personal: [
-    { src: lifeWorking, alt: 'Nguyễn Đức Tài làm việc tại quán cà phê trong chuyến đi', caption: 'Công việc không giới hạn không gian' },
-    { src: lifeKoiGarden, alt: 'Nguyễn Đức Tài tại khu vườn hồ cá koi', caption: 'Khoảng lặng để tái tạo năng lượng' },
-    { src: lifeCafe, alt: 'Nguyễn Đức Tài tại không gian cà phê xanh', caption: 'Nhịp sống cân bằng' },
-    { src: lifeEventHall, alt: 'Nguyễn Đức Tài tại sảnh sự kiện', caption: 'Một khoảnh khắc ngoài giờ làm việc' },
-    { src: lifePoolSelfie, alt: 'Nguyễn Đức Tài bên khu vực hồ bơi nghỉ dưỡng', caption: 'Một ngày bên hồ bơi' },
-    { src: lifeResortOutdoor, alt: 'Nguyễn Đức Tài trong không gian ngoài trời tại khu nghỉ dưỡng', caption: 'Tận hưởng không gian ngoài trời' },
-    { src: lifeSunglasses, alt: 'Nguyễn Đức Tài đeo kính tại khu vực hồ bơi', caption: 'Khoảnh khắc thư giãn' },
-    { src: lifeResortLounge, alt: 'Nguyễn Đức Tài tại khu vực lounge của khu nghỉ dưỡng', caption: 'Nạp lại năng lượng' },
-    { src: lifePoolLounge, alt: 'Nguyễn Đức Tài thư giãn trên ghế bên hồ bơi', caption: 'Khoảng nghỉ bên hồ bơi' },
-    { src: lifeResortGarden, alt: 'Nguyễn Đức Tài tại khu vườn trong chuyến nghỉ dưỡng', caption: 'Gần hơn với thiên nhiên' },
-    { src: lifeRestaurant, alt: 'Nguyễn Đức Tài tại không gian nhà hàng', caption: 'Khoảnh khắc đời thường' },
-    { src: lifeEventHallTwo, alt: 'Nguyễn Đức Tài tại sảnh lớn của sự kiện', caption: 'Một chuyến đi đáng nhớ' },
+    { src: relaxWorkingLaptop, alt: 'Nguyễn Đức Tài làm việc với laptop tại quán cà phê nhiều cây xanh', caption: 'Công việc không giới hạn không gian' },
+    { src: relaxEventHall, alt: 'Nguyễn Đức Tài trong trang phục trắng tại sảnh sự kiện', caption: 'Một dấu mốc trên hành trình trải nghiệm' },
+    { src: relaxKoiGarden, alt: 'Nguyễn Đức Tài thư giãn bên hồ cá koi trong khu vườn', caption: 'Khoảng lặng để tái tạo năng lượng' },
+    { src: relaxResortGarden, alt: 'Nguyễn Đức Tài tại khu vườn xanh của khu nghỉ dưỡng', caption: 'Gần hơn với thiên nhiên' },
+    { src: relaxResortHallway, alt: 'Nguyễn Đức Tài trong trang phục trắng tại hành lang khu nghỉ dưỡng', caption: 'Những ngày sống chậm hơn' },
+    { src: relaxBeachLounge, alt: 'Nguyễn Đức Tài đeo kính thư giãn trên ghế bên bãi biển', caption: 'Nạp lại năng lượng bên biển' },
+    { src: relaxPoolLounge, alt: 'Nguyễn Đức Tài thư giãn tại khu ghế nghỉ ngoài trời', caption: 'Một nhịp nghỉ giữa hành trình' },
+    { src: relaxWhiteShirt, alt: 'Chân dung đời thường Nguyễn Đức Tài trong trang phục áo trắng', caption: 'Khoảnh khắc giản dị ngoài công việc' },
+    { src: relaxCafeCandid, alt: 'Nguyễn Đức Tài trong khoảnh khắc đời thường tại nhà hàng khu nghỉ dưỡng', caption: 'Cân bằng để đi đường dài' },
   ],
 } as const
