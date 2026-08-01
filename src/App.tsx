@@ -1,21 +1,30 @@
 import { useEffect, useMemo, useState } from 'react'
 import { motion } from 'framer-motion'
 import {
-  ArrowRight, BarChart3, BookOpen, BriefcaseBusiness, Check, ChevronDown,
+  ArrowRight, BarChart3, BookOpen, BriefcaseBusiness, Check,
   CircleCheck, Database, GraduationCap, LineChart, Menu, MessageCircle,
   Phone, PieChart, Search, ShieldCheck, Sparkles, Target, TrendingUp,
   Users, WalletCards, X,
 } from 'lucide-react'
 import { FaFacebookF, FaTiktok, FaYoutube } from 'react-icons/fa6'
 import { SiZalo } from 'react-icons/si'
-import { galleries, images } from './assets/images'
+import { feedbacks, galleries, images } from './assets/images'
 import { fetchMarketData, type MarketData } from './services/market'
 
-const CONTACT = {
-  phone: '0348634111',
-  phoneHref: 'tel:0348634111',
-  zalo: 'https://zalo.me/0348634111',
-} as const
+const CONTACTS = [
+  {
+    name: 'Hải Anh HTG',
+    phone: '039.383.5398',
+    phoneHref: 'tel:0393835398',
+    zalo: 'https://zalo.me/0393835398',
+  },
+  {
+    name: 'Minh Hải HTG',
+    phone: '097.102.5264',
+    phoneHref: 'tel:0971025264',
+    zalo: 'https://zalo.me/0971025264',
+  },
+] as const
 
 const SOCIALS = [
   {
@@ -39,8 +48,8 @@ const SOCIALS = [
 ] as const
 
 const nav = [
-  ['Về Tài Trần', 'about'], ['HTG', 'htg'], ['Dịch vụ', 'services'],
-  ['Góc nhìn', 'insights'], ['Kết nối', 'contact'],
+  ['Về Tài Trần', 'about'], ['HTG', 'htg'], ['Khóa học', 'courses'],
+  ['Kết nối', 'contact'],
 ]
 
 const reveal = {
@@ -77,7 +86,7 @@ function Navigation() {
         <img src={images.logoSmall.src} alt={images.logoSmall.alt} className="h-11 w-16 object-contain" />
         <span className="border-l border-slate-200 pl-3">
           <span className="block text-sm font-extrabold tracking-tight text-forest">TÀI TRẦN</span>
-          <span className="block text-[10px] font-semibold uppercase tracking-[.18em] text-slate-400">Founder of HTG</span>
+          <span className="block text-[10px] font-semibold uppercase tracking-[.18em] text-slate-400">Nhà sáng lập HTG</span>
         </span>
       </a>
       <nav className="hidden items-center gap-7 lg:flex" aria-label="Điều hướng chính">
@@ -87,7 +96,7 @@ function Navigation() {
             <Icon size={15} />
           </a>)}
         </div>
-        <a href={CONTACT.zalo} target="_blank" rel="noreferrer" className="rounded-full bg-forest px-5 py-3 text-sm font-bold text-white transition hover:bg-emerald-700">Liên hệ</a>
+        <a href="#contact" className="rounded-full bg-forest px-5 py-3 text-sm font-bold text-white transition hover:bg-emerald-700">Liên hệ</a>
       </nav>
       <button className="rounded-xl p-2 text-forest lg:hidden" onClick={() => setOpen(!open)} aria-label="Mở menu" aria-expanded={open}>
         {open ? <X /> : <Menu />}
@@ -99,7 +108,7 @@ function Navigation() {
         {SOCIALS.map(({ label, href, icon: Icon }) => <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label} className="grid h-10 w-10 place-items-center rounded-full bg-mist text-forest">
           <Icon size={18} />
         </a>)}
-        <a href={CONTACT.zalo} target="_blank" rel="noreferrer" aria-label="Zalo" className="grid h-10 w-10 place-items-center rounded-full bg-[#0068ff] text-white"><SiZalo size={22} /></a>
+        <a href="#contact" aria-label="Xem thông tin liên hệ" className="grid h-10 w-10 place-items-center rounded-full bg-[#0068ff] text-white"><SiZalo size={22} /></a>
       </div>
     </nav>}
   </header>
@@ -112,20 +121,20 @@ function Hero() {
     <Container className="relative grid items-center gap-12 lg:grid-cols-[1.05fr_.95fr]">
       <motion.div {...reveal}>
         <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-emerald-200 bg-white px-4 py-2 text-xs font-bold uppercase tracking-[.16em] text-emerald-700 shadow-sm">
-          <Sparkles size={14} /> Founder of HTG
+          <Sparkles size={14} /> Nhà sáng lập HTG
         </div>
         <h1 className="max-w-3xl text-5xl font-extrabold leading-[1.08] tracking-[-.045em] text-ink sm:text-6xl lg:text-[72px]">
-          Đầu tư có chiến lược. <span className="text-emerald-600">Phát triển bằng giá trị thực.</span>
+          Đầu tư bằng dữ liệu. <span className="text-emerald-600">Bứt phá bằng kỷ luật.</span>
         </h1>
         <p className="mt-7 max-w-2xl text-lg leading-8 text-slate-600">
-          Tài Trần – Founder của HTG, đồng hành cùng nhà đầu tư xây dựng danh mục phù hợp, quản trị rủi ro và tiếp cận thị trường chứng khoán bằng dữ liệu, kỷ luật và một quy trình rõ ràng.
+          Tài Trần – Nhà sáng lập HTG, đồng hành cùng nhà đầu tư xây dựng danh mục phù hợp, quản trị rủi ro và tiếp cận thị trường bằng dữ liệu, kỷ luật cùng quy trình rõ ràng — dựa trên hệ tư duy và phương pháp đầu tư khác biệt, được HTG xây dựng riêng cho thị trường chứng khoán Việt Nam.
         </p>
         <div className="mt-9 flex flex-wrap gap-3">
-          <Button href={CONTACT.zalo}>Liên hệ</Button>
+          <Button href="#contact">Liên hệ</Button>
           <Button href="#htg" outline>Khám phá HTG</Button>
         </div>
         <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4 border-t border-emerald-950/10 pt-7">
-          {['8 năm đầu tư thực chiến', 'Đã tư vấn hàng nghìn nhà đầu tư', 'Chuyên viên phân tích tại VPS & SSI'].map(x =>
+          {['8 năm đầu tư thực chiến', 'Đã tư vấn hàng nghìn nhà đầu tư', 'Chuyên gia phân tích tại VPS & SSI & VND'].map(x =>
             <span key={x} className="flex items-center gap-2 text-sm font-semibold text-slate-600"><CircleCheck size={17} className="text-emerald-600" />{x}</span>)}
         </div>
       </motion.div>
@@ -133,7 +142,7 @@ function Hero() {
         <div className="relative min-h-[460px] sm:min-h-[520px]">
           <div className="absolute inset-x-4 bottom-0 top-12 rounded-[32px] bg-forest sm:inset-x-8 sm:rounded-[40px]" />
           <div className="absolute inset-x-8 bottom-8 top-0 rounded-[32px] border border-white/50 bg-gradient-to-br from-emerald-50 to-emerald-200 sm:inset-x-16 sm:rounded-[40px]" />
-          <img src={images.founderCutout.src} alt={images.founderCutout.alt} className="absolute inset-0 h-full w-full object-contain object-bottom" fetchPriority="high" />
+          <img src={images.founderSuit.src} alt={images.founderSuit.alt} className="absolute inset-0 h-full w-full object-cover object-top opacity-90" />
           <div className="absolute right-2 top-12 grid h-16 w-16 place-items-center rounded-full border-[6px] border-mist bg-white shadow-soft sm:right-0 sm:top-16 sm:h-24 sm:w-24 sm:border-8">
             <TrendingUp className="text-emerald-600" size={32} />
           </div>
@@ -153,28 +162,30 @@ function BusinessCard() {
       <motion.div {...reveal} className="overflow-hidden rounded-[32px] bg-forest shadow-soft">
         <div className="grid lg:grid-cols-[.8fr_1.2fr]">
           <div className="relative min-h-80 overflow-hidden bg-emerald-900">
-            <img src={images.founderSuit.src} alt={images.founderSuit.alt} className="absolute inset-0 h-full w-full object-cover object-top opacity-90" />
-            <div className="absolute inset-0 bg-gradient-to-r from-transparent to-forest/70" />
+            <img src={images.businessCardPortrait.src} alt={images.businessCardPortrait.alt} className="absolute inset-0 h-full w-full object-cover object-top" loading="lazy" />
           </div>
           <div className="p-8 text-white sm:p-12">
-            <p className="eyebrow text-emerald-300">Digital business card</p>
-            <h2 className="text-4xl font-extrabold tracking-tight">Nguyễn Đức Tài</h2>
-            <p className="mt-2 text-emerald-200">Tài Trần • Founder & Strategic Lead, HTG</p>
-            <p className="mt-6 max-w-2xl leading-7 text-emerald-50/75">Chuyên gia phân tích kinh tế và phân tích định lượng với 8 năm đầu tư chứng khoán thực chiến. Tài có kinh nghiệm trong vai trò chuyên viên phân tích tại các công ty chứng khoán VPS và SSI, đồng thời đã trực tiếp tư vấn, chia sẻ phương pháp và đồng hành cùng hàng nghìn nhà đầu tư trên thị trường Việt Nam.</p>
+            <p className="eyebrow text-emerald-300">Danh thiếp điện tử</p>
+            <h2 className="text-4xl font-extrabold tracking-tight">Tài Trần</h2>
+            <p className="mt-2 text-emerald-200">Tài Trần • Nhà sáng lập kiêm Giám đốc chiến lược HTG</p>
+            <p className="mt-6 max-w-2xl leading-7 text-emerald-50/75">Chuyên gia phân tích kinh tế và phân tích định lượng với 8 năm đầu tư chứng khoán thực chiến. Tài có kinh nghiệm trong vai trò chuyên gia phân tích tại các công ty chứng khoán VPS, SSI và VND, đồng thời đã trực tiếp tư vấn, chia sẻ phương pháp và đồng hành cùng hàng nghìn nhà đầu tư trên thị trường Việt Nam.</p>
             <div className="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-4">
               {[
                 ['8 năm', 'Thực chiến'],
                 ['Hàng nghìn', 'Nhà đầu tư'],
-                ['VPS · SSI', 'Kinh nghiệm'],
-                ['Founder', 'HTG'],
+                ['VPS · SSI · VND', 'Kinh nghiệm'],
+                ['Sáng lập', 'HTG'],
               ].map(([value, label]) => <div key={label} className="rounded-xl border border-white/10 bg-white/[.06] p-3">
                 <p className="text-lg font-extrabold text-white">{value}</p>
                 <p className="mt-1 text-[11px] uppercase tracking-wider text-emerald-200/70">{label}</p>
               </div>)}
             </div>
             <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              <a className="contact-line" href={CONTACT.phoneHref}><Phone size={18} /> {CONTACT.phone}</a>
-              <a className="contact-line" href={CONTACT.zalo} target="_blank" rel="noreferrer"><MessageCircle size={18} /> Liên hệ qua Zalo</a>
+              {CONTACTS.map(contact => <div key={contact.phone} className="space-y-3">
+                <p className="text-sm font-extrabold text-emerald-200">{contact.name}</p>
+                <a className="contact-line" href={contact.phoneHref}><Phone size={18} /> {contact.phone}</a>
+                <a className="contact-line" href={contact.zalo} target="_blank" rel="noreferrer"><MessageCircle size={18} /> Nhắn Zalo</a>
+              </div>)}
             </div>
             <div className="mt-7 flex flex-wrap gap-2 border-t border-white/10 pt-6" aria-label="Mạng xã hội của Tài Trần">
               {SOCIALS.map(({ label, href, icon: Icon }) => <a key={label} href={href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[.06] px-4 py-2.5 text-xs font-bold text-emerald-50 transition hover:-translate-y-0.5 hover:bg-white/10">
@@ -193,8 +204,21 @@ const services = [
   [PieChart, 'Tư vấn danh mục', 'Thiết kế cấu trúc danh mục phù hợp với mục tiêu, khẩu vị rủi ro và khung thời gian của từng nhà đầu tư.'],
   [BarChart3, 'Phân tích thị trường', 'Kết hợp góc nhìn vĩ mô, doanh nghiệp và dữ liệu định lượng để xây dựng kịch bản thị trường.'],
   [GraduationCap, 'Đào tạo nhà đầu tư', 'Hệ thống hóa kiến thức, quy trình ra quyết định và năng lực tự quản trị tài sản.'],
-  [Database, 'Giải pháp fintech', 'Công cụ dữ liệu và quy trình số hỗ trợ theo dõi, đánh giá và kỷ luật hóa quyết định đầu tư.'],
+  [Database, 'Giải pháp công nghệ tài chính', 'Công cụ dữ liệu và quy trình số hỗ trợ theo dõi, đánh giá và kỷ luật hóa quyết định đầu tư.'],
 ]
+
+// Thêm khóa học mới bằng cách import ảnh trong assets/images.ts rồi thêm một mục vào mảng này.
+const courses = [
+  {
+    image: images.coaching,
+    badge: 'Coaching hội viên HTG',
+    title: 'Đánh sóng 2026',
+    description: 'Chương trình đồng hành chuyên sâu giúp học viên nhận diện chân sóng, xác định thời điểm và xây dựng quy mô vốn phù hợp để đầu tư an toàn, hiệu quả hơn.',
+    lessons: ['Nhận diện chân sóng siêu cổ', 'Quy mô vốn hiệu suất cao nhất'],
+    cta: 'Đăng ký tư vấn',
+    href: '#contact',
+  },
+] as const
 
 function About() {
   return <>
@@ -211,11 +235,11 @@ function About() {
         </motion.div>
         <motion.div {...reveal}>
           <SectionTitle eyebrow="Về Tài Trần" title="Kinh nghiệm thị trường, được hệ thống hóa bằng dữ liệu." />
-          <p className="mt-6 leading-8 text-slate-600">Nguyễn Đức Tài là chuyên gia phân tích kinh tế, phân tích định lượng và Founder của HTG. Trong 8 năm tham gia thị trường chứng khoán, anh tích lũy trải nghiệm từ cả hai phía: nghiên cứu chuyên nghiệp tại công ty chứng khoán và trực tiếp quản trị quyết định đầu tư trong những giai đoạn thị trường khác nhau.</p>
-          <p className="mt-4 leading-8 text-slate-600">Tài có kinh nghiệm trong vai trò chuyên viên phân tích tại CTCK VPS và SSI. Môi trường làm việc này giúp anh xây dựng nền tảng về đọc báo cáo doanh nghiệp, đánh giá bối cảnh vĩ mô, chuẩn hóa dữ liệu và chuyển hóa thông tin thành những luận điểm có thể kiểm chứng.</p>
+          <p className="mt-6 leading-8 text-slate-600">Tài Trần là chuyên gia phân tích kinh tế, phân tích định lượng và Nhà sáng lập HTG. Trong 8 năm tham gia thị trường chứng khoán, anh tích lũy trải nghiệm từ cả hai phía: nghiên cứu chuyên nghiệp tại công ty chứng khoán và trực tiếp quản trị quyết định đầu tư trong những giai đoạn thị trường khác nhau.</p>
+          <p className="mt-4 leading-8 text-slate-600">Tài có kinh nghiệm trong vai trò chuyên gia phân tích tại CTCK VPS, SSI và VND. Môi trường làm việc này giúp anh xây dựng nền tảng về đọc báo cáo doanh nghiệp, đánh giá bối cảnh vĩ mô, chuẩn hóa dữ liệu và chuyển hóa thông tin thành những luận điểm có thể kiểm chứng.</p>
           <p className="mt-4 leading-8 text-slate-600">Qua quá trình tư vấn cho hàng nghìn nhà đầu tư, Tài nhận thấy kết quả bền vững không đến từ một mã cổ phiếu “nóng” hay dự đoán ngắn hạn, mà từ một hệ thống phù hợp: hiểu mục tiêu, kiểm soát rủi ro, đọc dữ liệu đúng cách và kiên trì với nguyên tắc.</p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2">
-            {['Chuyên gia phân tích kinh tế & định lượng', '8 năm đầu tư chứng khoán thực chiến', 'Chuyên viên phân tích tại VPS & SSI', 'Đã tư vấn cho hàng nghìn nhà đầu tư'].map(item =>
+            {['Chuyên gia phân tích kinh tế & định lượng', '8 năm đầu tư chứng khoán thực chiến', 'Chuyên gia phân tích tại VPS & SSI & VND', 'Đã tư vấn cho hàng nghìn nhà đầu tư'].map(item =>
               <div key={item} className="flex gap-3 rounded-xl bg-mist p-4 text-sm font-bold text-ink"><Check className="shrink-0 text-emerald-600" size={19} />{item}</div>)}
           </div>
         </motion.div>
@@ -237,8 +261,8 @@ function About() {
           <div className="rounded-[32px] border border-emerald-950/10 bg-white p-8 shadow-soft">
             <img src={images.logo.src} alt={images.logo.alt} loading="lazy" className="mx-auto h-44 w-full object-contain" />
             <div className="mt-6 border-t pt-6">
-              <p className="text-sm font-bold uppercase tracking-[.18em] text-emerald-600">HTG Investment</p>
-              <p className="mt-3 text-xl font-bold leading-8 text-ink">Research → Advisory → Education → Technology</p>
+              <p className="text-sm font-bold uppercase tracking-[.18em] text-emerald-600">Đầu tư HTG</p>
+              <p className="mt-3 text-xl font-bold leading-8 text-ink">Nghiên cứu → Tư vấn → Đào tạo → Công nghệ</p>
             </div>
           </div>
         </motion.div>
@@ -252,7 +276,7 @@ function ProfileAndRecognition() {
     {
       icon: Search,
       title: 'Nền tảng phân tích chuyên nghiệp',
-      text: 'Kinh nghiệm làm việc trong vai trò chuyên viên phân tích tại CTCK VPS và SSI giúp Tài hình thành phương pháp nghiên cứu có cấu trúc: bắt đầu từ dữ liệu, kiểm tra giả định và luôn đặt luận điểm trong bối cảnh chu kỳ thị trường.',
+      text: 'Kinh nghiệm làm việc trong vai trò chuyên gia phân tích tại CTCK VPS, SSI và VND giúp Tài hình thành phương pháp nghiên cứu có cấu trúc: bắt đầu từ dữ liệu, kiểm tra giả định và luôn đặt luận điểm trong bối cảnh chu kỳ thị trường.',
     },
     {
       icon: LineChart,
@@ -266,7 +290,7 @@ function ProfileAndRecognition() {
     },
     {
       icon: BriefcaseBusiness,
-      title: 'Founder của HTG',
+      title: 'Nhà sáng lập HTG',
       text: 'HTG được xây dựng để kết nối nghiên cứu, tư vấn, giáo dục và công nghệ tài chính trong một hệ sinh thái thống nhất, hướng tới năng lực ra quyết định độc lập và có trách nhiệm.',
     },
   ]
@@ -275,19 +299,19 @@ function ProfileAndRecognition() {
     {
       image: images.vpsAward,
       title: 'Nhân viên xuất sắc 2024',
-      caption: 'Bằng khen hiển thị danh hiệu “Nhân viên xuất sắc 2024” mang tên Nguyễn Đức Tài.',
+      caption: 'Bằng khen hiển thị danh hiệu “Nhân viên xuất sắc 2024” mang tên Tài Trần.',
       contain: true,
     },
     {
       image: images.vpsRecognition,
       title: 'Dấu mốc nghề nghiệp tại VPS',
-      caption: 'Tư liệu bảng vinh danh mang tên Nguyễn Đức Tài trong quá trình phát triển chuyên môn.',
+      caption: 'Tư liệu bảng vinh danh mang tên Tài Trần trong quá trình phát triển chuyên môn.',
       contain: true,
     },
     {
       image: images.ssiRecognition,
       title: 'Dấu mốc nghề nghiệp tại SSI',
-      caption: 'Tư liệu ghi nhận mang tên Nguyễn Đức Tài, được lưu giữ trong bộ hồ sơ nghề nghiệp.',
+      caption: 'Tư liệu ghi nhận mang tên Tài Trần, được lưu giữ trong bộ hồ sơ nghề nghiệp.',
       contain: true,
     },
     {
@@ -306,8 +330,8 @@ function ProfileAndRecognition() {
           <div className="mt-9 overflow-hidden rounded-3xl bg-forest">
             <img src={images.founderAward.src} alt={images.founderAward.alt} loading="lazy" className="aspect-[4/3] w-full object-cover object-top" />
             <div className="p-6 text-white">
-              <p className="text-lg font-extrabold">Nguyễn Đức Tài</p>
-              <p className="mt-2 text-sm leading-6 text-emerald-100/70">Chuyên gia phân tích kinh tế • Phân tích định lượng • Founder HTG</p>
+              <p className="text-lg font-extrabold">Tài Trần</p>
+              <p className="mt-2 text-sm leading-6 text-emerald-100/70">Chuyên gia phân tích kinh tế • Phân tích định lượng • Nhà sáng lập HTG</p>
             </div>
           </div>
         </div>
@@ -363,39 +387,76 @@ function Services() {
   </section>
 }
 
+function Courses() {
+  return <section id="courses" className="overflow-hidden bg-mist py-24">
+    <Container>
+      <SectionTitle eyebrow="Chương trình đào tạo" title="Khóa học giúp nhà đầu tư nâng cấp năng lực thực chiến." text="Nội dung được xây dựng theo hướng cô đọng, thực tiễn và có quy trình để học viên có thể áp dụng vào quyết định đầu tư của mình." />
+      <div className="mt-12 grid gap-7 lg:grid-cols-2">
+        {courses.map((course, index) => <motion.article {...reveal} transition={{ duration: .5, delay: index * .08 }} key={course.title} className="group overflow-hidden rounded-[32px] border border-emerald-950/10 bg-white shadow-soft">
+          <div className="relative aspect-video overflow-hidden bg-forest">
+            <img src={course.image.src} alt={course.image.alt} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.02]" />
+            <span className="absolute left-5 top-5 rounded-full border border-white/20 bg-forest/85 px-4 py-2 text-xs font-extrabold uppercase tracking-[.14em] text-emerald-200 backdrop-blur">{course.badge}</span>
+          </div>
+          <div className="p-7 sm:p-8">
+            <h3 className="text-3xl font-extrabold tracking-tight text-ink">{course.title}</h3>
+            <p className="mt-4 leading-7 text-slate-600">{course.description}</p>
+            <div className="mt-6 grid gap-3 sm:grid-cols-2">
+              {course.lessons.map(lesson => <div key={lesson} className="flex items-start gap-3 rounded-xl bg-mist p-4 text-sm font-bold text-ink"><BookOpen className="mt-0.5 shrink-0 text-emerald-600" size={18} />{lesson}</div>)}
+            </div>
+            <a href={course.href} className="mt-7 inline-flex items-center gap-2 rounded-full bg-forest px-6 py-3.5 text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-emerald-700">{course.cta}<ArrowRight size={17} /></a>
+          </div>
+        </motion.article>)}
+      </div>
+    </Container>
+  </section>
+}
+
 function PhilosophyProcess() {
-  const steps = [
-    ['01', 'Lắng nghe', 'Xác định mục tiêu, thời hạn, kỳ vọng và trải nghiệm đầu tư.'],
-    ['02', 'Chẩn đoán', 'Đánh giá danh mục, dòng tiền, mức độ tập trung và rủi ro.'],
-    ['03', 'Thiết kế', 'Xây dựng kịch bản và nguyên tắc phân bổ phù hợp.'],
-    ['04', 'Đồng hành', 'Theo dõi, rà soát và điều chỉnh khi bối cảnh thay đổi.'],
-  ]
   return <>
     <section className="overflow-hidden bg-forest py-24 text-white">
-      <Container className="grid gap-14 lg:grid-cols-[.85fr_1.15fr]">
-        <SectionTitle eyebrow="Triết lý đầu tư" title="Không chạy theo tiếng ồn. Tập trung vào xác suất và kỷ luật." text="HTG nhìn đầu tư như một quá trình quản trị quyết định: tìm kiếm biên an toàn, phân bổ hợp lý và luôn chuẩn bị cho những kịch bản không như kỳ vọng." light />
-        <div className="grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 sm:grid-cols-2">
-          {[
-            ['01', 'Dữ liệu trước cảm xúc'], ['02', 'Rủi ro trước lợi nhuận'],
-            ['03', 'Quy trình trước dự đoán'], ['04', 'Dài hạn trước biến động'],
-          ].map(([n, t]) => <div key={n} className="bg-forest p-7"><span className="text-sm font-bold text-emerald-300">{n}</span><p className="mt-8 text-xl font-bold">{t}</p></div>)}
-        </div>
-      </Container>
-    </section>
-    <section className="py-24">
       <Container>
-        <SectionTitle eyebrow="Quy trình chuyên nghiệp" title="Một lộ trình rõ ràng cho từng quyết định tài chính." />
-        <div className="relative mt-14 grid gap-6 md:grid-cols-4">
-          <div className="absolute left-0 right-0 top-7 hidden h-px bg-emerald-200 md:block" />
-          {steps.map(([n, title, text]) => <div key={n} className="relative">
-            <span className="relative z-10 grid h-14 w-14 place-items-center rounded-full border-4 border-white bg-emerald-100 text-sm font-extrabold text-emerald-700">{n}</span>
-            <h3 className="mt-6 text-lg font-extrabold text-ink">{title}</h3>
-            <p className="mt-2 text-sm leading-6 text-slate-500">{text}</p>
-          </div>)}
+        <SectionTitle eyebrow="Triết lý đầu tư" title="Nền tảng kinh điển, được nội địa hóa cho thị trường Việt Nam." light />
+        <div className="mt-12 grid overflow-hidden rounded-[32px] border border-white/10 bg-white/[.05] shadow-2xl lg:grid-cols-[.8fr_1.2fr]">
+          <div className="relative min-h-[420px] overflow-hidden bg-emerald-950 lg:min-h-full">
+            <img src={images.warrenBuffett.src} alt={images.warrenBuffett.alt} loading="lazy" className="absolute inset-0 h-full w-full object-cover object-center" />
+            <div className="absolute inset-0 bg-gradient-to-t from-forest/80 via-transparent to-transparent lg:bg-gradient-to-r lg:from-transparent lg:to-forest/50" />
+            <div className="absolute bottom-6 left-6 rounded-full border border-white/20 bg-forest/80 px-4 py-2 text-xs font-extrabold uppercase tracking-[.16em] text-emerald-200 backdrop-blur">Warren Buffett</div>
+          </div>
+          <div className="p-8 sm:p-12">
+            <div className="space-y-5 text-base leading-8 text-emerald-50/80">
+              <p>Khóa học này dựa trên nền tảng lý luận cực kỳ vững chắc. Hệ thống mang 70%–80% hồn cốt từ triết lý đầu tư kinh điển của Warren Buffett.</p>
+              <p className="border-l-2 border-emerald-400 pl-5 text-xl font-extrabold leading-8 text-white">Đó là tư duy sở hữu doanh nghiệp, lợi thế cạnh tranh và biên độ an toàn bất biến.</p>
+              <p>Tuy nhiên, thị trường Mỹ rất khác Việt Nam về quy mô, cấu trúc và tâm lý đám đông. Một lý thuyết hoàn hảo ở Phố Wall nếu áp dụng nguyên bản về nước ta sẽ rất dễ vấp ngã.</p>
+              <p>Vì vậy, bằng kinh nghiệm thực chiến, chúng tôi đã tinh chỉnh và nội địa hóa hệ thống này. Chúng tôi giữ nguyên tư duy cốt lõi của Buffett để đánh giá giá trị gốc của doanh nghiệp, nhưng linh hoạt cách đi tiền, chọn thời điểm theo chu kỳ và dòng tiền Việt Nam.</p>
+              <p>Đây không phải lý thuyết giáo điều, mà là bản đồ thực chiến dành riêng cho bạn. Chúc các nhà đầu tư làm chủ phương pháp và bứt phá tài sản bền vững cùng chúng tôi.</p>
+            </div>
+          </div>
         </div>
       </Container>
     </section>
   </>
+}
+
+function Insights() {
+  return <section id="insights" className="py-24">
+    <Container>
+      <div className="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+        <SectionTitle eyebrow="Góc nhìn thị trường" title="Góc nhìn để đọc thị trường sâu hơn." />
+        <a href="#contact" className="inline-flex items-center gap-2 font-bold text-emerald-700">Nhận bản tin phân tích <ArrowRight size={17} /></a>
+      </div>
+      <div className="mt-12 grid gap-6 lg:grid-cols-3">
+        {[
+          ['Vĩ mô', 'Đọc chu kỳ: Khi thanh khoản quan trọng hơn những tiêu đề nóng', 'Khung phân tích'],
+          ['Chiến lược', 'Ba câu hỏi cần trả lời trước khi tăng tỷ trọng cổ phiếu', 'Quản trị danh mục'],
+          ['Định lượng', 'Dùng dữ liệu để phân biệt xu hướng và nhiễu ngắn hạn', 'Phân tích định lượng'],
+        ].map(([tag, title, meta], i) => <article key={title} className="group rounded-3xl border border-slate-200 p-7 transition hover:shadow-soft">
+          <div className="mb-10 flex items-center justify-between"><span className="rounded-full bg-emerald-50 px-3 py-1 text-xs font-bold text-emerald-700">{tag}</span><span className="text-xs text-slate-400">0{i + 1}</span></div>
+          <h3 className="text-xl font-extrabold leading-8 text-ink">{title}</h3>
+          <p className="mt-5 text-sm text-slate-400">{meta} • 6 phút đọc</p>
+        </article>)}
+      </div>
+    </Container>
+  </section>
 }
 
 function InsightsDashboard() {
@@ -456,7 +517,7 @@ function InsightsDashboard() {
       <Container>
         <div className="grid gap-10 lg:grid-cols-[.7fr_1.3fr]">
           <div>
-            <SectionTitle eyebrow="Market dashboard" title="Dữ liệu thị trường thật, với nguồn và thời điểm rõ ràng." text="Dashboard lấy dữ liệu VNINDEX trực tiếp từ hệ thống Finfo của VNDIRECT. Dữ liệu được đồng bộ qua máy chủ, có cache ngắn hạn và ghi rõ phiên giao dịch gần nhất." light />
+            <SectionTitle eyebrow="Bảng dữ liệu thị trường" title="Dữ liệu thị trường thật, với nguồn và thời điểm rõ ràng." text="Bảng dữ liệu lấy chỉ số VNINDEX trực tiếp từ hệ thống Finfo của VNDIRECT. Dữ liệu được đồng bộ qua máy chủ, có bộ nhớ đệm ngắn hạn và ghi rõ phiên giao dịch gần nhất." light />
             <div className="mt-8 flex items-center gap-2 text-xs text-emerald-300"><span className={`h-2 w-2 rounded-full ${market ? 'bg-emerald-400' : 'bg-amber-400'}`} /> {market ? `${market.source} • ĐÃ ĐỒNG BỘ` : marketLoading ? 'ĐANG ĐỒNG BỘ DỮ LIỆU' : 'NGUỒN DỮ LIỆU CHƯA SẴN SÀNG'}</div>
           </div>
           <div className="rounded-[28px] border border-white/10 bg-white/[.06] p-6 shadow-2xl">
@@ -505,32 +566,26 @@ function EcosystemTestimonials() {
   return <>
     <section className="py-24">
       <Container>
-        <SectionTitle eyebrow="HTG ecosystem" title="Nghiên cứu, cộng đồng và công nghệ cùng vận hành." />
+        <SectionTitle eyebrow="Hệ sinh thái HTG" title="Nghiên cứu, cộng đồng và công nghệ cùng vận hành." />
         <div className="mt-12 grid gap-6 lg:grid-cols-3">
-          <article className="overflow-hidden rounded-3xl border"><img src={images.researchLogo.src} alt={images.researchLogo.alt} loading="lazy" className="h-52 w-full bg-white object-contain p-5" /><div className="p-6"><h3 className="text-xl font-extrabold text-ink">HTG Research</h3><p className="mt-2 text-sm leading-6 text-slate-500">Nghiên cứu doanh nghiệp, thị trường và các mô hình định lượng hỗ trợ quyết định.</p></div></article>
-          <article className="overflow-hidden rounded-3xl border"><img src={images.eventGroup.src} alt={images.eventGroup.alt} loading="lazy" className="h-52 w-full object-cover" /><div className="p-6"><h3 className="text-xl font-extrabold text-ink">Investor Education</h3><p className="mt-2 text-sm leading-6 text-slate-500">Hội thảo và chương trình giúp nhà đầu tư xây dựng năng lực độc lập.</p></div></article>
+          <article className="overflow-hidden rounded-3xl border"><img src={images.researchLogo.src} alt={images.researchLogo.alt} loading="lazy" className="h-52 w-full bg-white object-contain p-5" /><div className="p-6"><h3 className="text-xl font-extrabold text-ink">Nghiên cứu HTG</h3><p className="mt-2 text-sm leading-6 text-slate-500">Nghiên cứu doanh nghiệp, thị trường và các mô hình định lượng hỗ trợ quyết định.</p></div></article>
+          <article className="overflow-hidden rounded-3xl border"><img src={images.eventPeople.src} alt={images.eventPeople.alt} loading="lazy" className="h-52 w-full object-cover object-top" /><div className="p-6"><h3 className="text-xl font-extrabold text-ink">Đào tạo nhà đầu tư</h3><p className="mt-2 text-sm leading-6 text-slate-500">Hội thảo và chương trình giúp nhà đầu tư xây dựng năng lực độc lập.</p></div></article>
           <article className="overflow-hidden rounded-3xl border">
             <div className="flex h-52 items-center justify-center bg-forest p-5">
               <img src={images.communityLogo.src} alt={images.communityLogo.alt} loading="lazy" className="h-full w-full object-contain" />
             </div>
-            <div className="p-6"><h3 className="text-xl font-extrabold text-ink">HTG Community</h3><p className="mt-2 text-sm leading-6 text-slate-500">Không gian chia sẻ góc nhìn, quy trình và kỷ luật đầu tư có trách nhiệm.</p></div>
+            <div className="p-6"><h3 className="text-xl font-extrabold text-ink">Cộng đồng HTG</h3><p className="mt-2 text-sm leading-6 text-slate-500">Không gian chia sẻ góc nhìn, quy trình và kỷ luật đầu tư có trách nhiệm.</p></div>
           </article>
-        </div>
-        <div className="mt-6 grid gap-6 sm:grid-cols-2">
-          <img src={images.eventStage.src} alt={images.eventStage.alt} loading="lazy" className="aspect-[16/8] w-full rounded-3xl object-cover" />
-          <img src={images.eventPeople.src} alt={images.eventPeople.alt} loading="lazy" className="aspect-[16/8] w-full rounded-3xl object-cover object-top" />
         </div>
       </Container>
     </section>
     <section className="bg-mist py-24">
       <Container>
-        <SectionTitle eyebrow="Phản hồi từ nhà đầu tư" title="Điều khách hàng trân trọng trong quá trình đồng hành." text="Để tránh tạo lời chứng thực không được xác minh, phần này mô tả các giá trị khách hàng thường tìm kiếm thay vì gán phát ngôn cho cá nhân cụ thể." />
-        <div className="mt-12 grid gap-5 md:grid-cols-3">
-          {[
-            ['Rõ ràng hơn', 'Một quy trình giúp nhìn danh mục theo mục tiêu và rủi ro, thay vì chỉ theo biến động giá.'],
-            ['Chủ động hơn', 'Nắm được lý do đằng sau mỗi quyết định và có kịch bản trước khi thị trường thay đổi.'],
-            ['Kỷ luật hơn', 'Có nguyên tắc rà soát, phân bổ và điều chỉnh nhất quán theo thời gian.'],
-          ].map(([title, text]) => <div key={title} className="rounded-3xl border border-emerald-950/10 bg-white p-7"><MessageCircle className="text-emerald-600" /><h3 className="mt-8 text-xl font-extrabold text-ink">{title}</h3><p className="mt-3 leading-7 text-slate-500">{text}</p></div>)}
+        <SectionTitle eyebrow="Phản hồi từ nhà đầu tư" title="Những chia sẻ thực tế trong quá trình đồng hành." />
+        <div className="mt-12 columns-1 gap-5 md:columns-2">
+          {feedbacks.map(feedback => <motion.figure {...reveal} key={feedback.src} className="mb-5 break-inside-avoid overflow-hidden rounded-2xl border border-emerald-950/10 bg-white p-2 shadow-sm">
+            <img src={feedback.src} alt={feedback.alt} loading="lazy" className="h-auto w-full rounded-xl" />
+          </motion.figure>)}
         </div>
       </Container>
     </section>
@@ -540,13 +595,13 @@ function EcosystemTestimonials() {
 function VisualStory() {
   const groups = [
     {
-      eyebrow: 'Community events',
+      eyebrow: 'Sự kiện cộng đồng',
       title: 'Sự kiện & cộng đồng đầu tư',
       text: 'Các hoạt động chia sẻ kiến thức, kết nối diễn giả và giao lưu cùng cộng đồng nhà đầu tư.',
       photos: galleries.events,
     },
     {
-      eyebrow: 'Beyond the market',
+      eyebrow: 'Ngoài thị trường',
       title: 'Phía sau những giờ phân tích',
       text: 'Một vài khoảnh khắc đời thường được chọn lọc, nơi công việc, trải nghiệm và sự cân bằng gặp nhau.',
       photos: galleries.personal,
@@ -612,36 +667,22 @@ function BalancedMasonry({ photos }: { photos: readonly GalleryPhoto[] }) {
   </div>
 }
 
-const faqs = [
-  ['HTG phù hợp với nhà đầu tư nào?', 'HTG phù hợp với nhà đầu tư muốn xây dựng quy trình bài bản, hiểu rủi ro và ra quyết định dựa trên dữ liệu. Mức độ phù hợp cụ thể sẽ được xác định sau buổi trao đổi nhu cầu.'],
-  ['Tư vấn có cam kết lợi nhuận không?', 'Không. Đầu tư chứng khoán luôn có rủi ro. HTG tập trung vào phân tích, xây dựng kịch bản và quản trị danh mục; không cam kết hoặc bảo đảm mức sinh lời.'],
-  ['Tôi có thể liên hệ với Tài Trần bằng cách nào?', 'Bạn có thể gọi trực tiếp số 0348634111 hoặc nhắn Zalo qua các nút Liên hệ trên website.'],
-  ['HTG có cung cấp khuyến nghị mua bán tức thời?', 'Nội dung trên website mang tính thông tin và giáo dục. Mọi trao đổi chuyên sâu cần đặt trong bối cảnh mục tiêu, khẩu vị rủi ro và điều kiện của từng nhà đầu tư.'],
-]
-
 function FAQContact() {
-  const [active, setActive] = useState(0)
   return <>
-    <section className="py-24">
-      <Container className="grid gap-14 lg:grid-cols-[.75fr_1.25fr]">
-        <SectionTitle eyebrow="FAQ" title="Những câu hỏi thường gặp." />
-        <div>
-          {faqs.map(([q, a], i) => <div key={q} className="border-b border-slate-200">
-            <button onClick={() => setActive(active === i ? -1 : i)} className="flex w-full items-center justify-between gap-5 py-6 text-left font-extrabold text-ink" aria-expanded={active === i}>{q}<ChevronDown className={`shrink-0 transition ${active === i ? 'rotate-180 text-emerald-600' : ''}`} /></button>
-            {active === i && <p className="pb-6 pr-10 leading-7 text-slate-500">{a}</p>}
-          </div>)}
-        </div>
-      </Container>
-    </section>
     <section id="contact" className="bg-forest py-24 text-white">
       <Container>
         <div className="grid items-center gap-10 rounded-[32px] border border-white/10 bg-white/[.05] p-8 shadow-2xl sm:p-12 lg:grid-cols-[1fr_auto]">
           <div>
           <SectionTitle eyebrow="Kết nối cùng HTG" title="Bắt đầu bằng một cuộc trao đổi rõ ràng." text="Chia sẻ mục tiêu hoặc vấn đề bạn đang quan tâm. HTG sẽ phản hồi để xác định bước tiếp theo phù hợp." light />
           </div>
-          <div className="flex flex-col gap-3 sm:flex-row lg:flex-col">
-            <a href={CONTACT.zalo} target="_blank" rel="noreferrer" className="inline-flex min-w-56 items-center justify-center gap-3 rounded-full bg-white px-6 py-4 text-sm font-extrabold text-forest transition hover:-translate-y-0.5"><MessageCircle size={19} /> Nhắn Zalo</a>
-            <a href={CONTACT.phoneHref} className="inline-flex min-w-56 items-center justify-center gap-3 rounded-full border border-white/20 px-6 py-4 text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-white/10"><Phone size={19} /> {CONTACT.phone}</a>
+          <div className="grid gap-4 sm:grid-cols-2">
+            {CONTACTS.map(contact => <div key={contact.phone} className="rounded-2xl border border-white/10 bg-white/[.04] p-4">
+              <p className="mb-3 text-center text-sm font-extrabold text-emerald-200">{contact.name}</p>
+              <div className="flex flex-col gap-3">
+                <a href={contact.zalo} target="_blank" rel="noreferrer" className="inline-flex min-w-56 items-center justify-center gap-3 rounded-full bg-white px-6 py-4 text-sm font-extrabold text-forest transition hover:-translate-y-0.5"><MessageCircle size={19} /> Nhắn Zalo</a>
+                <a href={contact.phoneHref} className="inline-flex min-w-56 items-center justify-center gap-3 rounded-full border border-white/20 px-6 py-4 text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-white/10"><Phone size={19} /> {contact.phone}</a>
+              </div>
+            </div>)}
           </div>
         </div>
       </Container>
@@ -651,8 +692,6 @@ function FAQContact() {
 
 function FloatingContacts() {
   return <div className="fixed bottom-5 right-4 z-40 flex flex-col gap-3 sm:right-6">
-    <a href={CONTACT.phoneHref} aria-label={`Gọi ${CONTACT.phone}`} className="float-btn bg-emerald-600"><Phone size={20} /></a>
-    <a href={CONTACT.zalo} target="_blank" rel="noreferrer" aria-label="Kết nối Zalo với Tài Trần" className="float-btn bg-[#0068ff]"><SiZalo size={25} /></a>
     <a href={SOCIALS[0].href} target="_blank" rel="noreferrer" aria-label="Theo dõi Tài Trần trên Facebook" className="float-btn bg-[#1877f2]"><FaFacebookF size={20} /></a>
     <a href={SOCIALS[1].href} target="_blank" rel="noreferrer" aria-label="Theo dõi Tài Trần trên YouTube" className="float-btn bg-[#ff0000]"><FaYoutube size={22} /></a>
     <a href={SOCIALS[2].href} target="_blank" rel="noreferrer" aria-label="Theo dõi Tài Trần trên TikTok" className="float-btn bg-black"><FaTiktok size={20} /></a>
@@ -663,9 +702,9 @@ function Footer() {
   return <footer className="bg-[#04150F] py-12 text-slate-400">
     <Container>
       <div className="flex flex-col justify-between gap-8 border-b border-white/10 pb-9 md:flex-row">
-        <div className="flex items-center gap-4"><img src={images.logo.src} alt={images.logo.alt} className="h-16 w-28 object-contain" /><div><p className="font-extrabold text-white">TÀI TRẦN × HTG</p><p className="mt-1 text-xs">Data • Discipline • Sustainable Value</p></div></div>
+        <div className="flex items-center gap-4"><img src={images.logo.src} alt={images.logo.alt} className="h-16 w-28 object-contain" /><div><p className="font-extrabold text-white">TÀI TRẦN × HTG</p><p className="mt-1 text-xs">Dữ liệu • Kỷ luật • Giá trị bền vững</p></div></div>
         <div className="space-y-5">
-          <div className="flex flex-wrap gap-6 text-sm"><a href="#about">Về Tài Trần</a><a href="#htg">HTG</a><a href="#services">Dịch vụ</a><a href="#contact">Liên hệ</a></div>
+          <div className="flex flex-wrap gap-6 text-sm"><a href="#about">Về Tài Trần</a><a href="#htg">HTG</a><a href="#courses">Khóa học</a><a href="#contact">Liên hệ</a></div>
           <div className="flex flex-wrap gap-3" aria-label="Theo dõi Tài Trần">
             {SOCIALS.map(({ label, handle, href, icon: Icon }) => <a key={label} href={href} target="_blank" rel="noreferrer" title={`${label}: ${handle}`} className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-slate-300 transition hover:-translate-y-0.5 hover:border-emerald-500 hover:text-emerald-300">
               <Icon size={17} /><span className="sr-only">{label}: {handle}</span>
@@ -683,6 +722,6 @@ function Footer() {
 
 export default function App() {
   return <div className="min-h-screen bg-white text-ink">
-    <Navigation /><main><Hero /><BusinessCard /><About /><ProfileAndRecognition /><Services /><PhilosophyProcess /><InsightsDashboard /><EcosystemTestimonials /><VisualStory /><FAQContact /></main><Footer /><FloatingContacts />
+    <Navigation /><main><Hero /><BusinessCard /><About /><Courses /><PhilosophyProcess /><EcosystemTestimonials /><VisualStory /><FAQContact /></main><Footer /><FloatingContacts />
   </div>
 }

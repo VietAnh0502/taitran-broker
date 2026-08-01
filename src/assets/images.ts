@@ -1,7 +1,8 @@
 import logo from '../../img/htg-investment-logo-transparent.png'
 import founderCutout from './optimized/founder-cutout.png'
 import founderSuit from './optimized/founder-suit.jpg'
-import founderWorking from './optimized/founder-working.jpg'
+import founderWorking from '../../img/pro/nguyen-duc-tai-white-shirt-writing-analysis.jpg'
+import businessCardPortrait from '../../img/pro/nguyen-duc-tai-holding-professional-award.jpg'
 import researchLogo from './optimized/htg-research.jpg'
 import communityLogo from './optimized/community-transparent.png'
 import eventStage from './optimized/event-stage.jpg'
@@ -19,53 +20,77 @@ import partyStage from './optimized/gallery-party-stage.jpg'
 import partyBanquet from './optimized/gallery-party-banquet.jpg'
 import partyGuest from './optimized/gallery-party-guest.jpg'
 import partyCommunity from './optimized/gallery-party-community.jpg'
+import securitiesCommissionEvent from '../../img/pro/uybanchungkhoan.jpg'
 import relaxWorkingLaptop from './optimized/relax-working-laptop.jpg'
 import relaxEventHall from './optimized/relax-event-hall.jpg'
-import relaxKoiGarden from './optimized/relax-koi-garden.jpg'
-import relaxResortGarden from './optimized/relax-resort-garden.jpg'
+import relaxKoiGarden from '../../img/relax/nguyen-duc-tai-koi-garden-selfie.jpg'
+import relaxResortGarden from '../../img/relax/nguyen-duc-tai-resort-garden-selfie.jpg'
 import relaxResortHallway from './optimized/relax-resort-hallway.jpg'
 import relaxBeachLounge from './optimized/relax-beach-lounge.jpg'
-import relaxPoolLounge from './optimized/relax-pool-lounge.jpg'
-import relaxWhiteShirt from './optimized/relax-white-shirt.jpg'
+import relaxRunningEvent from '../../img/relax/cuocthichay.jpg'
+import relaxWhiteShirt from '../../img/relax/nguyen-duc-tai-white-shirt-indoor-selfie-03.jpg'
 import relaxCafeCandid from './optimized/relax-cafe-candid.jpg'
+import relaxReading from '../../img/relax/docsach.jpg'
+import coaching from './optimized/coaching.jpg'
+import warrenBuffett from './optimized/warren-buffett.jpg'
+import feedback1 from './optimized/feedback1.jpg'
+import feedback2 from './optimized/feedback2.jpg'
+import feedback3 from './optimized/feedback3.jpg'
+import feedback4 from './optimized/feedback4.jpg'
+import feedback5 from './optimized/feedback5.jpg'
+import feedback6 from './optimized/feedback6.jpg'
 
 export const images = {
-  logo: { src: logo, alt: 'Logo HTG Investment màu xanh lá' },
-  logoSmall: { src: logo, alt: 'Logo HTG Investment' },
+  logo: { src: logo, alt: 'Biểu trưng Đầu tư HTG màu xanh lá' },
+  logoSmall: { src: logo, alt: 'Biểu trưng Đầu tư HTG' },
   founderCutout: { src: founderCutout, alt: 'Tài Trần làm việc bên máy tính và tài liệu phân tích' },
   founderSuit: { src: founderSuit, alt: 'Chân dung Tài Trần trong trang phục vest chuyên nghiệp' },
   founderWorking: { src: founderWorking, alt: 'Tài Trần đang làm việc tại bàn phân tích' },
-  researchLogo: { src: researchLogo, alt: 'Nhận diện HTG Research – Trung tâm phân tích' },
-  communityLogo: { src: communityLogo, alt: 'Logo trong suốt HTG Smart Investments Community' },
+  businessCardPortrait: { src: businessCardPortrait, alt: 'Tài Trần cầm kỷ niệm chương nghề nghiệp' },
+  researchLogo: { src: researchLogo, alt: 'Nhận diện Nghiên cứu HTG – Trung tâm phân tích' },
+  communityLogo: { src: communityLogo, alt: 'Biểu trưng trong suốt Cộng đồng Đầu tư Thông minh HTG' },
   eventStage: { src: eventStage, alt: 'Sân khấu hội tư vấn đầu tư với chủ đề Bản lĩnh, bứt phá, thành công' },
   eventGroup: { src: eventGroup, alt: 'Các khách mời chụp ảnh tại hội tư vấn đầu tư' },
   eventPeople: { src: eventPeople, alt: 'Tài Trần cùng các khách mời tại sự kiện cộng đồng đầu tư' },
-  founderAward: { src: founderAward, alt: 'Nguyễn Đức Tài cầm kỷ niệm chương trong bộ ảnh nghề nghiệp' },
-  vpsAward: { src: vpsAward, alt: 'Bằng khen Nhân viên xuất sắc 2024 mang tên Nguyễn Đức Tài' },
-  vpsRecognition: { src: vpsRecognition, alt: 'Bảng vinh danh nghề nghiệp mang tên Nguyễn Đức Tài tại VPS' },
-  ssiRecognition: { src: ssiRecognition, alt: 'Bảng vinh danh nghề nghiệp mang tên Nguyễn Đức Tài tại SSI' },
-  awardsCollection: { src: awardsCollection, alt: 'Góc trưng bày sách chuyên môn, cúp và kỷ niệm chương nghề nghiệp của Nguyễn Đức Tài' },
+  founderAward: { src: founderAward, alt: 'Tài Trần cầm kỷ niệm chương trong bộ ảnh nghề nghiệp' },
+  vpsAward: { src: vpsAward, alt: 'Bằng khen Nhân viên xuất sắc 2024 mang tên Tài Trần' },
+  vpsRecognition: { src: vpsRecognition, alt: 'Bảng vinh danh nghề nghiệp mang tên Tài Trần tại VPS' },
+  ssiRecognition: { src: ssiRecognition, alt: 'Bảng vinh danh nghề nghiệp mang tên Tài Trần tại SSI' },
+  awardsCollection: { src: awardsCollection, alt: 'Góc trưng bày sách chuyên môn, cúp và kỷ niệm chương nghề nghiệp của Tài Trần' },
+  coaching: { src: coaching, alt: 'Khóa coaching hội viên HTG Đánh sóng 2026 cùng Tài Trần' },
+  warrenBuffett: { src: warrenBuffett, alt: 'Nhà đầu tư Warren Buffett' },
 } as const
+
+export const feedbacks = [
+  { src: feedback1, alt: 'Phản hồi của nhà đầu tư 1' },
+  { src: feedback2, alt: 'Phản hồi của nhà đầu tư 2' },
+  { src: feedback3, alt: 'Phản hồi của nhà đầu tư 3' },
+  { src: feedback4, alt: 'Phản hồi của nhà đầu tư 4' },
+  { src: feedback5, alt: 'Phản hồi của nhà đầu tư 5' },
+  { src: feedback6, alt: 'Phản hồi của nhà đầu tư 6' },
+] as const
 
 export const galleries = {
   events: [
-    { src: partySpeaking, alt: 'Nguyễn Đức Tài phát biểu tại sự kiện tư vấn đầu tư', caption: 'Chia sẻ tại sự kiện đầu tư', ratio: 2 / 3 },
+    { src: partySpeaking, alt: 'Tài Trần phát biểu tại sự kiện tư vấn đầu tư', caption: 'Chia sẻ tại sự kiện đầu tư', ratio: 2 / 3 },
     { src: partyVenue, alt: 'Toàn cảnh hội trường sự kiện đầu tư', caption: 'Không gian hội thảo nhà đầu tư', ratio: 2 / 3 },
     { src: partyNetworking, alt: 'Khách mời giao lưu trong tiệc sự kiện đầu tư', caption: 'Giao lưu cùng cộng đồng', ratio: 2 / 3 },
-    { src: partyStage, alt: 'Nguyễn Đức Tài tại sân khấu sự kiện nhà đầu tư', caption: 'Dấu ấn tại sự kiện', ratio: 2 / 3 },
+    { src: partyStage, alt: 'Tài Trần tại sân khấu sự kiện nhà đầu tư', caption: 'Dấu ấn tại sự kiện', ratio: 2 / 3 },
     { src: partyBanquet, alt: 'Bàn tiệc được chuẩn bị tại sự kiện cộng đồng đầu tư', caption: 'Không gian kết nối tại sự kiện', ratio: 2 / 3 },
-    { src: partyGuest, alt: 'Nguyễn Đức Tài chụp ảnh cùng khách mời tại sự kiện', caption: 'Gặp gỡ khách mời', ratio: 3 / 2 },
-    { src: partyCommunity, alt: 'Nguyễn Đức Tài giao lưu tại sự kiện cộng đồng nhà đầu tư', caption: 'Kết nối cộng đồng đầu tư', ratio: 2 / 3 },
+    { src: partyGuest, alt: 'Tài Trần chụp ảnh cùng khách mời tại sự kiện', caption: 'Gặp gỡ khách mời', ratio: 3 / 2 },
+    { src: partyCommunity, alt: 'Tài Trần giao lưu tại sự kiện cộng đồng nhà đầu tư', caption: 'Kết nối cộng đồng đầu tư', ratio: 2 / 3 },
+    { src: securitiesCommissionEvent, alt: 'Tài Trần tại sự kiện của Ủy ban Chứng khoán', caption: 'Dấu ấn tại sự kiện ngành chứng khoán', ratio: 2 / 3 },
   ],
   personal: [
-    { src: relaxWorkingLaptop, alt: 'Nguyễn Đức Tài làm việc với laptop tại quán cà phê nhiều cây xanh', caption: 'Công việc không giới hạn không gian', ratio: 4 / 3 },
-    { src: relaxEventHall, alt: 'Nguyễn Đức Tài trong trang phục trắng tại sảnh sự kiện', caption: 'Một dấu mốc trên hành trình trải nghiệm', ratio: 4 / 3 },
-    { src: relaxKoiGarden, alt: 'Nguyễn Đức Tài thư giãn bên hồ cá koi trong khu vườn', caption: 'Khoảng lặng để tái tạo năng lượng', ratio: 4 / 3 },
-    { src: relaxResortGarden, alt: 'Nguyễn Đức Tài tại khu vườn xanh của khu nghỉ dưỡng', caption: 'Gần hơn với thiên nhiên', ratio: 4 / 3 },
-    { src: relaxResortHallway, alt: 'Nguyễn Đức Tài trong trang phục trắng tại hành lang khu nghỉ dưỡng', caption: 'Những ngày sống chậm hơn', ratio: 4 / 3 },
-    { src: relaxBeachLounge, alt: 'Nguyễn Đức Tài đeo kính thư giãn trên ghế bên bãi biển', caption: 'Nạp lại năng lượng bên biển', ratio: 4 / 3 },
-    { src: relaxPoolLounge, alt: 'Nguyễn Đức Tài thư giãn tại khu ghế nghỉ ngoài trời', caption: 'Một nhịp nghỉ giữa hành trình', ratio: 4 / 3 },
-    { src: relaxWhiteShirt, alt: 'Chân dung đời thường Nguyễn Đức Tài trong trang phục áo trắng', caption: 'Khoảnh khắc giản dị ngoài công việc', ratio: 4 / 3 },
-    { src: relaxCafeCandid, alt: 'Nguyễn Đức Tài trong khoảnh khắc đời thường tại nhà hàng khu nghỉ dưỡng', caption: 'Cân bằng để đi đường dài', ratio: 4 / 3 },
+    { src: relaxWorkingLaptop, alt: 'Tài Trần làm việc với máy tính xách tay tại quán cà phê nhiều cây xanh', caption: 'Công việc không giới hạn không gian', ratio: 4 / 3 },
+    { src: relaxEventHall, alt: 'Tài Trần trong trang phục trắng tại sảnh sự kiện', caption: 'Một dấu mốc trên hành trình trải nghiệm', ratio: 4 / 3 },
+    { src: relaxKoiGarden, alt: 'Tài Trần thư giãn bên hồ cá koi trong khu vườn', caption: 'Khoảng lặng để tái tạo năng lượng', ratio: 4 / 3 },
+    { src: relaxResortGarden, alt: 'Tài Trần tại khu vườn xanh của khu nghỉ dưỡng', caption: 'Gần hơn với thiên nhiên', ratio: 4 / 3 },
+    { src: relaxResortHallway, alt: 'Tài Trần trong trang phục trắng tại hành lang khu nghỉ dưỡng', caption: 'Những ngày sống chậm hơn', ratio: 4 / 3 },
+    { src: relaxBeachLounge, alt: 'Tài Trần đeo kính thư giãn trên ghế bên bãi biển', caption: 'Nạp lại năng lượng bên biển', ratio: 4 / 3 },
+    { src: relaxRunningEvent, alt: 'Tài Trần tham gia cuộc thi chạy', caption: 'Năng lượng trên đường chạy', ratio: 4 / 3 },
+    { src: relaxWhiteShirt, alt: 'Chân dung đời thường Tài Trần trong trang phục áo trắng', caption: 'Khoảnh khắc giản dị ngoài công việc', ratio: 4 / 3 },
+    { src: relaxCafeCandid, alt: 'Tài Trần trong khoảnh khắc đời thường tại nhà hàng khu nghỉ dưỡng', caption: 'Cân bằng để đi đường dài', ratio: 4 / 3 },
+    { src: relaxReading, alt: 'Tài Trần đọc sách trong thời gian thư giãn', caption: 'Đọc để mở rộng góc nhìn', ratio: 4 / 3 },
   ],
 } as const
