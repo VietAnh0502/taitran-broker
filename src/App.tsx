@@ -138,18 +138,24 @@ function Hero() {
             <span key={x} className="flex items-center gap-2 text-sm font-semibold text-slate-600"><CircleCheck size={17} className="text-emerald-600" />{x}</span>)}
         </div>
       </motion.div>
-      <motion.div initial={{ opacity: 0, scale: .96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .7 }} className="flex flex-col gap-4">
-        <div className="relative min-h-[460px] sm:min-h-[520px]">
-          <div className="absolute inset-x-4 bottom-0 top-12 rounded-[32px] bg-forest sm:inset-x-8 sm:rounded-[40px]" />
-          <div className="absolute inset-x-8 bottom-8 top-0 rounded-[32px] border border-white/50 bg-gradient-to-br from-emerald-50 to-emerald-200 sm:inset-x-16 sm:rounded-[40px]" />
-          <img src={images.founderSuit.src} alt={images.founderSuit.alt} className="absolute inset-0 h-full w-full object-cover object-top opacity-90" />
-          <div className="absolute right-2 top-12 grid h-16 w-16 place-items-center rounded-full border-[6px] border-mist bg-white shadow-soft sm:right-0 sm:top-16 sm:h-24 sm:w-24 sm:border-8">
-            <TrendingUp className="text-emerald-600" size={32} />
+      <motion.div initial={{ opacity: 0, scale: .96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .7 }} className="mx-auto w-full max-w-[540px]">
+        <div className="overflow-hidden rounded-[32px] border border-emerald-950/10 bg-white shadow-soft sm:rounded-[40px]">
+          <div className="relative min-h-[460px] overflow-hidden bg-emerald-100 sm:min-h-[540px]">
+            <img src={images.founderSuit.src} alt={images.founderSuit.alt} className="absolute inset-0 h-full w-full object-cover object-top" fetchPriority="high" />
+            <div className="absolute inset-x-0 top-0 h-32 bg-gradient-to-b from-forest/35 to-transparent" />
+            <div className="absolute left-5 top-5 inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/90 px-4 py-2 text-[11px] font-extrabold uppercase tracking-[.14em] text-forest shadow-sm backdrop-blur sm:left-7 sm:top-7">
+              <Sparkles size={14} className="text-emerald-600" /> Nhà sáng lập HTG
+            </div>
           </div>
-        </div>
-        <div className="relative mx-2 rounded-2xl border border-emerald-950/10 bg-white p-4 shadow-soft sm:mx-8 sm:flex sm:items-center sm:justify-between sm:gap-6 sm:p-5 lg:mx-0">
-          <p className="text-xs font-bold uppercase tracking-[.15em] text-emerald-600">Chuyên môn cốt lõi</p>
-          <p className="mt-2 font-extrabold text-ink sm:mt-0 sm:text-right">Kinh tế • Định lượng • Danh mục</p>
+          <div className="grid gap-4 border-t border-emerald-950/10 p-5 sm:grid-cols-[auto_1fr] sm:items-center sm:p-6">
+            <div className="grid h-12 w-12 place-items-center rounded-xl bg-emerald-50 text-emerald-600">
+              <TrendingUp size={23} />
+            </div>
+            <div className="sm:text-right">
+              <p className="text-[11px] font-extrabold uppercase tracking-[.16em] text-emerald-600">Chuyên môn cốt lõi</p>
+              <p className="mt-1.5 text-lg font-extrabold text-ink">Kinh tế • Định lượng • Danh mục</p>
+            </div>
+          </div>
         </div>
       </motion.div>
     </Container>
