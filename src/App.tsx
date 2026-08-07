@@ -133,10 +133,7 @@ function Hero() {
           <Button href="#contact">Liên hệ</Button>
           <Button href="#htg" outline>Khám phá HTG</Button>
         </div>
-        <div className="mt-10 flex flex-wrap gap-x-8 gap-y-4 border-t border-emerald-950/10 pt-7">
-          {['8 năm đầu tư thực chiến', 'Đã tư vấn hàng nghìn nhà đầu tư', 'Chuyên gia phân tích tại VPS & SSI & VND'].map(x =>
-            <span key={x} className="flex items-center gap-2 text-sm font-semibold text-slate-600"><CircleCheck size={17} className="text-emerald-600" />{x}</span>)}
-        </div>
+        
       </motion.div>
       <motion.div initial={{ opacity: 0, scale: .96 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: .7 }} className="mx-auto w-full max-w-[540px]">
         <div className="overflow-hidden rounded-[32px] border border-emerald-950/10 bg-white shadow-soft sm:rounded-[40px]">
@@ -166,39 +163,17 @@ function BusinessCard() {
   return <section className="-mt-1 bg-white py-16">
     <Container>
       <motion.div {...reveal} className="overflow-hidden rounded-[32px] bg-forest shadow-soft">
-        <div className="grid lg:grid-cols-[.8fr_1.2fr]">
-          <div className="relative min-h-80 overflow-hidden bg-emerald-900">
-            <img src={images.businessCardPortrait.src} alt={images.businessCardPortrait.alt} className="absolute inset-0 h-full w-full object-cover object-top" loading="lazy" />
+        <div className="grid items-center lg:grid-cols-[1.1fr_.9fr]">
+          <div className="relative min-h-[320px] sm:min-h-[420px] overflow-hidden bg-emerald-900 flex items-center justify-center">
+            <img src={images.businessCardPortrait.src} alt={images.businessCardPortrait.alt} className="max-h-full max-w-full object-contain lg:object-cover object-center" loading="lazy" />
           </div>
-          <div className="p-8 text-white sm:p-12">
-            <p className="eyebrow text-emerald-300">Danh thiếp điện tử</p>
-            <h2 className="text-4xl font-extrabold tracking-tight">Tài Trần</h2>
-            <p className="mt-2 text-emerald-200">Tài Trần • Nhà sáng lập kiêm Giám đốc chiến lược HTG</p>
-            <p className="mt-6 max-w-2xl leading-7 text-emerald-50/75">Chuyên gia phân tích kinh tế và phân tích định lượng với 8 năm đầu tư chứng khoán thực chiến. Tài có kinh nghiệm trong vai trò chuyên gia phân tích tại các công ty chứng khoán VPS, SSI và VND, đồng thời đã trực tiếp tư vấn, chia sẻ phương pháp và đồng hành cùng hàng nghìn nhà đầu tư trên thị trường Việt Nam.</p>
-            <div className="mt-7 grid grid-cols-2 gap-3 sm:grid-cols-4">
-              {[
-                ['8 năm', 'Thực chiến'],
-                ['Hàng nghìn', 'Nhà đầu tư'],
-                ['VPS · SSI · VND', 'Kinh nghiệm'],
-                ['Sáng lập', 'HTG'],
-              ].map(([value, label]) => <div key={label} className="rounded-xl border border-white/10 bg-white/[.06] p-3">
-                <p className="text-lg font-extrabold text-white">{value}</p>
-                <p className="mt-1 text-[11px] uppercase tracking-wider text-emerald-200/70">{label}</p>
-              </div>)}
+          <div className="p-6 text-white sm:p-8">
+            <div className="max-w-xl">
+              <p className="eyebrow text-emerald-300">Danh thiếp điện tử</p>
+              <h2 className="text-4xl font-extrabold tracking-tight">Tài Trần</h2>
+              <p className="mt-2 text-emerald-200">Tài Trần • Nhà sáng lập kiêm Giám đốc chiến lược HTG</p>
+              <p className="mt-6 leading-7 text-emerald-50/75">Chuyên gia phân tích kinh tế và phân tích định lượng với 8 năm đầu tư chứng khoán thực chiến. Tài có kinh nghiệm trong vai trò chuyên gia phân tích tại các công ty chứng khoán VPS, SSI và VND, đồng thời đã trực tiếp tư vấn, chia sẻ phương pháp và đồng hành cùng hàng nghìn nhà đầu tư trên thị trường Việt Nam.</p>
             </div>
-            <div className="mt-8 grid gap-4 sm:grid-cols-2">
-              {CONTACTS.map(contact => <div key={contact.phone} className="space-y-3">
-                <p className="text-sm font-extrabold text-emerald-200">{contact.name}</p>
-                <a className="contact-line" href={contact.phoneHref}><Phone size={18} /> {contact.phone}</a>
-                <a className="contact-line" href={contact.zalo} target="_blank" rel="noreferrer"><MessageCircle size={18} /> Nhắn Zalo</a>
-              </div>)}
-            </div>
-            <div className="mt-7 flex flex-wrap gap-2 border-t border-white/10 pt-6" aria-label="Mạng xã hội của Tài Trần">
-              {SOCIALS.map(({ label, href, icon: Icon }) => <a key={label} href={href} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[.06] px-4 py-2.5 text-xs font-bold text-emerald-50 transition hover:-translate-y-0.5 hover:bg-white/10">
-                <Icon size={15} /> {label}
-              </a>)}
-            </div>
-            <a href="#contact" className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-forest">Kết nối cùng Tài <ArrowRight size={17} /></a>
           </div>
         </div>
       </motion.div>
@@ -728,6 +703,18 @@ function Footer() {
 
 export default function App() {
   return <div className="min-h-screen bg-white text-ink">
-    <Navigation /><main><Hero /><BusinessCard /><About /><Courses /><PhilosophyProcess /><EcosystemTestimonials /><VisualStory /><FAQContact /></main><Footer /><FloatingContacts />
+    <Navigation />
+    <main className="pt-20">
+      <Hero />
+      <BusinessCard />
+      <About />
+      <Courses />
+      <PhilosophyProcess />
+      <EcosystemTestimonials />
+      <VisualStory />
+      <FAQContact />
+    </main>
+    <Footer />
+    <FloatingContacts />
   </div>
 }
