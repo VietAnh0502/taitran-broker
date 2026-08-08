@@ -150,7 +150,7 @@ function Hero() {
             </div>
             <div className="sm:text-right">
               <p className="text-[11px] font-extrabold uppercase tracking-[.16em] text-emerald-600">Chuyên môn cốt lõi</p>
-              <p className="mt-1.5 text-lg font-extrabold text-ink">Kinh tế • Định lượng • Danh mục</p>
+              <p className="mt-1.5 text-lg font-extrabold text-ink">Kinh tế • Định lượng • Phân tích</p>
             </div>
           </div>
         </div>
@@ -205,42 +205,63 @@ const reports = [
   {
     title: 'Chiến lược đầu tư tháng 7',
     subtitle: 'Định hướng chiến lược đồng bộ và kế hoạch phân bổ vốn.',
-    href: new URL('../bao_cao/chien_luoc_dau_tu_thang_7.pdf', import.meta.url).href,
+    href: new URL('../bao_cao/chien_luoc_dau_tu_t7-2026.pdf', import.meta.url).href,
     thumbnail: images.reportStrategyJulyThumbnail,
     publishedAt: new Date('2026-07-01'),
   },
   {
     title: 'Báo cáo phân tích PC1 tháng 6',
     subtitle: 'Quan điểm giá trị và rủi ro trong kỳ tái cơ cấu tháng 6.',
-    href: new URL('../bao_cao/bao_cao_phan_tich_pc1_t6.pdf', import.meta.url).href,
+    href: new URL('../bao_cao/bao_cao_phan_tich_pc1_t6-2026.pdf', import.meta.url).href,
     thumbnail: images.reportPc1T6Thumbnail,
     publishedAt: new Date('2026-06-01'),
   },
   {
-    title: 'Báo cáo phân tích PC1 quý 1',
-    subtitle: 'Đánh giá kết quả và dự báo động lực tăng trưởng trong quý đầu năm.',
-    href: new URL('../bao_cao/bao_cao_phan_tich_pc1_quy1.pdf', import.meta.url).href,
-    thumbnail: images.reportPc1Q1Thumbnail,
-    publishedAt: new Date('2026-04-01'),
-  },
-  {
     title: 'Báo cáo phân tích GAS',
     subtitle: 'Phân tích vận hành, định giá và kịch bản đầu tư cho cổ phiếu GAS.',
-    href: new URL('../bao_cao/bao_cao_phan_tich_gas.pdf', import.meta.url).href,
+    href: new URL('../bao_cao/bao_cao_phan_tich_gas_t5-2026.pdf', import.meta.url).href,
     thumbnail: images.reportGasThumbnail,
     publishedAt: new Date('2026-05-01'),
   },
   {
     title: 'Báo cáo phân tích FPT',
     subtitle: 'Bóc tách động lực tăng trưởng và rủi ro công nghệ của FPT.',
-    href: new URL('../bao_cao/bao_cao_phan_tich_fpt.pdf', import.meta.url).href,
+    href: new URL('../bao_cao/bao_cao_phan_tich_fpt_t5-2026.pdf', import.meta.url).href,
     thumbnail: images.reportFptThumbnail,
-    publishedAt: new Date('2026-05-29'),
+    publishedAt: new Date('2026-05-01'),
+  },
+  {
+    title: 'Báo cáo phân tích BSR quý 1',
+    subtitle: 'Phân tích cơ bản và xu hướng vận hành của BSR.',
+    href: new URL('../bao_cao/bao_cao_phan_tich_bsr_quy1_t4-2026.pdf', import.meta.url).href,
+    thumbnail: images.reportBsrThumbnail,
+    publishedAt: new Date('2026-04-01'),
+  },
+  {
+    title: 'Báo cáo phân tích PVS quý 1',
+    subtitle: 'Đánh giá cơ hội, rủi ro và triển vọng cho PVS.',
+    href: new URL('../bao_cao/bao_cao_phan_tich_pvs_quy1_t4-2026.pdf', import.meta.url).href,
+    thumbnail: images.reportPvsThumbnail,
+    publishedAt: new Date('2026-04-01'),
+  },
+  {
+    title: 'Báo cáo phân tích PC1 quý 1',
+    subtitle: 'Đánh giá kết quả và dự báo động lực tăng trưởng trong quý đầu năm.',
+    href: new URL('../bao_cao/bao_cao_phan_tich_pc1_quy1_t4-2026.pdf', import.meta.url).href,
+    thumbnail: images.reportPc1Q1Thumbnail,
+    publishedAt: new Date('2026-04-01'),
+  },
+  {
+    title: 'Chiến lược đầu tư năm 2026 tháng 2',
+    subtitle: 'Nền tảng chiến lược đầu tư đầu năm 2026.',
+    href: new URL('../bao_cao/chien_luoc_dau_tu_nam_2026_t2-2026.pdf', import.meta.url).href,
+    thumbnail: images.reportStrategyFebThumbnail,
+    publishedAt: new Date('2026-02-01'),
   },
   {
     title: 'Báo cáo phân tích DCM',
     subtitle: 'Phân tích cơ bản và triển vọng giá cho DCM.',
-    href: new URL('../bao_cao/bao_cao_phan_tich_dcm.pdf', import.meta.url).href,
+    href: new URL('../bao_cao/bao_cao_phan_tich_dcm_t1-2026.pdf', import.meta.url).href,
     thumbnail: images.reportDcmThumbnail,
     publishedAt: new Date('2026-01-01'),
   },
@@ -442,7 +463,7 @@ function Reports() {
 
   return <section id="bao-cao" className="overflow-hidden py-24">
     <Container>
-      <SectionTitle eyebrow="Báo cáo phân tích" title="Báo cáo phân tích cổ phiếu và chiến lược mới nhất." text="Các báo cáo sắp xếp theo thứ tự thời gian, mỗi nội dung hiển thị thumbnail trang đầu để bạn xem trước nhanh hơn." />
+      <SectionTitle eyebrow="Báo cáo phân tích" title="Báo cáo phân tích cổ phiếu và chiến lược mới nhất." />
       <div className="mt-12 grid gap-7 lg:grid-cols-3">
         {sortedReports.map((report, index) => <motion.article {...reveal} transition={{ duration: .5, delay: index * .06 }} key={report.title} className="group overflow-hidden rounded-[32px] border border-emerald-950/10 bg-white shadow-soft">
           <div className="overflow-hidden bg-slate-100">
