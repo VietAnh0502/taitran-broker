@@ -48,7 +48,7 @@ const SOCIALS = [
 ] as const
 
 const nav = [
-  ['Về Tài Trần', 'about'], ['HTG', 'htg'], ['Khóa học', 'courses'],
+  ['Về Tài Trần', 'about'], ['HTG', 'htg'], ['Khóa học', 'courses'], ['Báo cáo', 'bao-cao'],
   ['Kết nối', 'contact'],
 ]
 
@@ -198,6 +198,51 @@ const courses = [
     lessons: ['Nhận diện chân sóng siêu cổ', 'Quy mô vốn hiệu suất cao nhất'],
     cta: 'Đăng ký tư vấn',
     href: '#contact',
+  },
+] as const
+
+const reports = [
+  {
+    title: 'Chiến lược đầu tư tháng 7',
+    subtitle: 'Định hướng chiến lược đồng bộ và kế hoạch phân bổ vốn.',
+    href: new URL('../bao_cao/chien_luoc_dau_tu_thang_7.pdf', import.meta.url).href,
+    thumbnail: images.reportStrategyJulyThumbnail,
+    publishedAt: new Date('2026-07-01'),
+  },
+  {
+    title: 'Báo cáo phân tích PC1 tháng 6',
+    subtitle: 'Quan điểm giá trị và rủi ro trong kỳ tái cơ cấu tháng 6.',
+    href: new URL('../bao_cao/bao_cao_phan_tich_pc1_t6.pdf', import.meta.url).href,
+    thumbnail: images.reportPc1T6Thumbnail,
+    publishedAt: new Date('2026-06-01'),
+  },
+  {
+    title: 'Báo cáo phân tích PC1 quý 1',
+    subtitle: 'Đánh giá kết quả và dự báo động lực tăng trưởng trong quý đầu năm.',
+    href: new URL('../bao_cao/bao_cao_phan_tich_pc1_quy1.pdf', import.meta.url).href,
+    thumbnail: images.reportPc1Q1Thumbnail,
+    publishedAt: new Date('2026-04-01'),
+  },
+  {
+    title: 'Báo cáo phân tích GAS',
+    subtitle: 'Phân tích vận hành, định giá và kịch bản đầu tư cho cổ phiếu GAS.',
+    href: new URL('../bao_cao/bao_cao_phan_tich_gas.pdf', import.meta.url).href,
+    thumbnail: images.reportGasThumbnail,
+    publishedAt: new Date('2026-05-01'),
+  },
+  {
+    title: 'Báo cáo phân tích FPT',
+    subtitle: 'Bóc tách động lực tăng trưởng và rủi ro công nghệ của FPT.',
+    href: new URL('../bao_cao/bao_cao_phan_tich_fpt.pdf', import.meta.url).href,
+    thumbnail: images.reportFptThumbnail,
+    publishedAt: new Date('2026-05-29'),
+  },
+  {
+    title: 'Báo cáo phân tích DCM',
+    subtitle: 'Phân tích cơ bản và triển vọng giá cho DCM.',
+    href: new URL('../bao_cao/bao_cao_phan_tich_dcm.pdf', import.meta.url).href,
+    thumbnail: images.reportDcmThumbnail,
+    publishedAt: new Date('2026-01-01'),
   },
 ] as const
 
@@ -385,6 +430,29 @@ function Courses() {
               {course.lessons.map(lesson => <div key={lesson} className="flex items-start gap-3 rounded-xl bg-mist p-4 text-sm font-bold text-ink"><BookOpen className="mt-0.5 shrink-0 text-emerald-600" size={18} />{lesson}</div>)}
             </div>
             <a href={course.href} className="mt-7 inline-flex items-center gap-2 rounded-full bg-forest px-6 py-3.5 text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-emerald-700">{course.cta}<ArrowRight size={17} /></a>
+          </div>
+        </motion.article>)}
+      </div>
+    </Container>
+  </section>
+}
+
+function Reports() {
+  const sortedReports = [...reports].sort((a, b) => b.publishedAt.getTime() - a.publishedAt.getTime())
+
+  return <section id="bao-cao" className="overflow-hidden py-24">
+    <Container>
+      <SectionTitle eyebrow="Báo cáo phân tích" title="Báo cáo phân tích cổ phiếu và chiến lược mới nhất." text="Các báo cáo sắp xếp theo thứ tự thời gian, mỗi nội dung hiển thị thumbnail trang đầu để bạn xem trước nhanh hơn." />
+      <div className="mt-12 grid gap-7 lg:grid-cols-3">
+        {sortedReports.map((report, index) => <motion.article {...reveal} transition={{ duration: .5, delay: index * .06 }} key={report.title} className="group overflow-hidden rounded-[32px] border border-emerald-950/10 bg-white shadow-soft">
+          <div className="overflow-hidden bg-slate-100">
+            <img src={report.thumbnail.src} alt={report.thumbnail.alt} loading="lazy" className="h-[260px] w-full object-contain transition duration-500" />
+          </div>
+          <div className="p-7 sm:p-8">
+            <p className="text-sm font-semibold uppercase tracking-[.18em] text-emerald-700">{new Intl.DateTimeFormat('vi-VN', { month: 'long', year: 'numeric' }).format(report.publishedAt)}</p>
+            <h3 className="mt-4 text-2xl font-extrabold tracking-tight text-ink">{report.title}</h3>
+            <p className="mt-4 leading-7 text-slate-600">{report.subtitle}</p>
+            <a href={report.href} target="_blank" rel="noreferrer" className="mt-7 inline-flex items-center gap-2 rounded-full bg-forest px-6 py-3.5 text-sm font-extrabold text-white transition hover:-translate-y-0.5 hover:bg-emerald-700">Xem báo cáo<ArrowRight size={17} /></a>
           </div>
         </motion.article>)}
       </div>
@@ -709,6 +777,7 @@ export default function App() {
       <BusinessCard />
       <About />
       <Courses />
+      <Reports />
       <PhilosophyProcess />
       <EcosystemTestimonials />
       <VisualStory />

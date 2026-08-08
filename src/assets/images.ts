@@ -33,6 +33,12 @@ import relaxCafeCandid from './optimized/relax-cafe-candid.jpg'
 import relaxReading from '../../img/relax/docsach.jpg'
 import coaching from './optimized/coaching.jpg'
 import warrenBuffett from './optimized/warren-buffett.jpg'
+import reportDcmThumbnail from './optimized/reports/bao_cao_phan_tich_dcm.pdf.png'
+import reportFptThumbnail from './optimized/reports/bao_cao_phan_tich_fpt.pdf.png'
+import reportGasThumbnail from './optimized/reports/bao_cao_phan_tich_gas.pdf.png'
+import reportPc1Q1Thumbnail from './optimized/reports/bao_cao_phan_tich_pc1_quy1.pdf.png'
+import reportPc1T6Thumbnail from './optimized/reports/bao_cao_phan_tich_pc1_t6.pdf.png'
+import reportStrategyJulyThumbnail from './optimized/reports/chien_luoc_dau_tu_thang_7.pdf.png'
 import feedback1 from './optimized/feedback1.jpg'
 import feedback2 from './optimized/feedback2.jpg'
 import feedback3 from './optimized/feedback3.jpg'
@@ -59,6 +65,12 @@ export const images = {
   awardsCollection: { src: awardsCollection, alt: 'Góc trưng bày sách chuyên môn, cúp và kỷ niệm chương nghề nghiệp của Tài Trần' },
   coaching: { src: coaching, alt: 'Khóa coaching hội viên HTG Đánh sóng 2026 cùng Tài Trần' },
   warrenBuffett: { src: warrenBuffett, alt: 'Nhà đầu tư Warren Buffett' },
+  reportDcmThumbnail: { src: reportDcmThumbnail, alt: 'Thumbnail trang đầu báo cáo phân tích DCM' },
+  reportFptThumbnail: { src: reportFptThumbnail, alt: 'Thumbnail trang đầu báo cáo phân tích FPT' },
+  reportGasThumbnail: { src: reportGasThumbnail, alt: 'Thumbnail trang đầu báo cáo phân tích GAS' },
+  reportPc1Q1Thumbnail: { src: reportPc1Q1Thumbnail, alt: 'Thumbnail trang đầu báo cáo phân tích PC1 Quý 1' },
+  reportPc1T6Thumbnail: { src: reportPc1T6Thumbnail, alt: 'Thumbnail trang đầu báo cáo phân tích PC1 Tháng 6' },
+  reportStrategyJulyThumbnail: { src: reportStrategyJulyThumbnail, alt: 'Thumbnail trang đầu báo cáo chiến lược đầu tư tháng 7' },
 } as const
 
 export const feedbacks = [
